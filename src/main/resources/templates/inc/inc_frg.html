@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+  <body>
+    <div th:fragment="copyright">
+      © 2016 demo
+    </div>
+    
+    <!-- ########################################################################################################################################### -->
+    <div th:fragment="main_footer">
+		<footer class="main-footer">
+			<div class="pull-right hidden-xs">
+				<b>Version</b> 2.0.7
+			</div>
+			<strong>Copyright &copy; 2016-2017 成都中慧.</strong> All rights reserved.
+		</footer>
+		<div class="control-sidebar-bg"></div>
+	</div>
+	<!-- ########################################################################################################################################### -->
+	
+	<!-- ########################################################################################################################################### -->
+	<div th:fragment="main_datalist">
+		<section class="content">
+			<div class="row">
+				<div class="col-md-12">
+					<div class="box">
+						<div class="box-header with-border">
+							<h2 style="text-align:center" th:text="${list_title}">数据列表</h2>
+							<table th:unless="${#lists.isEmpty(data_list)}" class="table table-bordered table-striped">
+								<thead>
+									<tr>
+										<th th:each="c : ${column_list}" th:text="${c.column_title}">title</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr th:each="e : ${data_list}">
+										<td th:each="c : ${column_list}" th:text="${e[c.column_name]}"></td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+					</div>
+				</div>
+				<!-- /.box-footer -->
+			</div>
+			<!-- /.box -->
+			<div></div>
+			<!-- /.col -->
+			<!-- /.row -->
+		</section>
+	</div>
+	<!-- ########################################################################################################################################### -->
+	
+	<!-- ########################################################################################################################################### -->		
+    <div th:fragment="main_menu">
+		<aside class="main-sidebar">
+			<!-- sidebar: style can be found in sidebar.less -->
+			<section class="sidebar">
+				<!-- Sidebar user panel -->
+				<!-- Profile Image -->
+				<div class="box box-primary">
+					<div class="box-body box-profile">
+						<img class="profile-user-img img-responsive img-circle" th:src="@{/image/logo/user_logo.jpg}" alt="User profile picture" />
+						<h3 class="profile-username text-center" th:text="${curUser}">user1</h3>
+						<!-- </ul> -->
+					</div>
+					<!-- /.box-body -->
+				</div>
+				<!-- /.box -->
+				<!-- sidebar menu: : style can be found in sidebar.less -->
+				<ul class="sidebar-menu" data-widget="tree">
+					<li class="treeview">
+						<a href="#"> <i class="fa fa-car"></i>
+							<span>小车子系统</span>
+							<span class="pull-right-container"><i class="fa fa-angle-left pull-right"></i></span>
+						</a>
+						<ul class="treeview-menu">
+							<li><a th:href="@{/query_car_info}"><i class="fa fa-circle-o"></i>车辆基本信息</a></li>
+							<li><a th:href="@{/query_car_account_record}"><i class="fa fa-circle-o"></i>车辆充值记录</a></li>
+							<li><a th:href="@{/query_car_account_fee}"><i class="fa fa-circle-o"></i>车辆扣费记录</a></li>
+							<li><a th:href="@{/query_car_peccancy}"><i class="fa fa-circle-o"></i>车辆违章记录</a></li>
+						</ul>
+					</li>
+					<li>
+						<a th:href="@{/query_trafficlight_info}"><i class="fa fa-map-signs"></i>
+							<span>红绿灯子系统</span>
+							<span class="pull-right-container"></span>
+						</a>
+					</li>
+					<li>
+						<a th:href="@{/query_roadlight_info}"><i class="fa fa-filter"></i>
+							<span>路灯子系统</span>
+							<span class="pull-right-container"> </span>
+						</a>
+					</li>
+					<li>
+						<a th:href="@{/query_all_sense_info}"><i class="fa fa-filter"></i>
+							<span>环境子系统</span>
+							<span class="pull-right-container"></span>
+						</a>
+					</li>
+					<li class="treeview">
+						<a href="#"> <i class="fa fa-bus"></i>
+							<span>公交车模块</span>
+							<span class="pull-right-container"> <i class="fa fa-angle-left pull-right"></i></span>
+						</a>
+						<ul class="treeview-menu">
+							<li><a th:href="@{/query_station_info}"><i class="fa fa-circle-o"></i> 站台信息</a></li>
+							<li><a th:href="@{/query_bus_capacity}"><i class="fa fa-circle-o"></i> 车载容量</a></li>
+						</ul>
+					</li>
+					<li>
+						<a th:href="@{/query_road_info}"><i class="fa fa-road"></i>
+							<span>道路子系统</span>
+							<span class="pull-right-container"> </span>
+						</a>
+					</li>
+					<li class="treeview">
+						<a href="#"> <i class="fa fa-database"></i>
+							<span>基础数据表 </span>
+							<span class="pull-right-container"> <i class="fa fa-angle-left pull-right"></i></span>
+						</a>
+						<ul class="treeview-menu">
+							<li><a th:href="@{/query_sand_car_info}"><i class="fa fa-circle-o"></i>车辆信息</a></li>
+							<li><a th:href="@{/query_peccancy_type}"><i class="fa fa-circle-o"></i> 违章代码</a></li>
+						</ul>
+					</li>
+					<li class="treeview">
+						<a href="#"> <i class="fa fa-users"></i>
+							<span>用户管理</span>
+							<span class="pull-right-container"> <i class="fa fa-angle-left pull-right"></i></span>
+						</a>
+						<ul class="treeview-menu">
+							<li><a th:href="@{/userauth}"><i class="fa fa-circle-o"></i>用户权限</a></li>
+							<li><a th:href="@{/query_car_user_info}"><i class="fa fa-circle-o"></i>用户信息</a></li>
+						</ul>
+					</li>
+					<li>
+						<a th:href="@{/query_weather_info}"><i class="fa fa-cloud"></i>
+							<span>气象信息查询</span>
+							<span class="pull-right-container"></span>
+						</a>
+					</li>
+					<li class="treeview">
+						<a href="#"> <i class="fa fa-exchange"></i>
+							<span>Etc模块</span>
+							<span class="pull-right-container"> <i class="fa fa-angle-left pull-right"></i></span>
+						</a>
+						<ul class="treeview-menu">
+							<li><a th:href="@{/query_etc_blacklist}"><i class="fa fa-circle-o"></i> Etc黑名单信息</a></li>
+							<li><a th:href="@{/query_etc_traffic_log}"><i class="fa fa-circle-o"></i> Etc通行日志</a></li>
+						</ul>
+					</li>
+				</ul>
+			</section>
+			<!-- /.sidebar -->
+		</aside>
+		</div>
+		<!-- ########################################################################################################################################### -->
+		
+  </body>
+</html>
